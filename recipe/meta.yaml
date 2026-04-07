@@ -1,0 +1,44 @@
+{% set name = "perl-class-inspector" %}
+{% set version = "1.36" %}
+{% set sha256 = "cc295d23a472687c24489d58226ead23b9fdc2588e522f0b5f0747741700694e" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Class-Inspector-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  run_exports:
+    - {{ pin_subpackage('perl-class-inspector', max_pin="x.x") }}
+
+requirements:
+  build:
+    - make  # [unix]
+  host:
+    - perl {{ perl }}
+    - perl-extutils-makemaker
+  run:
+    - perl
+
+test:
+  imports:
+    - Class::Inspector
+    - Class::Inspector::Functions
+
+about:
+  home: https://metacpan.org/release/Class-Inspector
+  dev_url: https://github.com/plicease/Class-Inspector
+  doc_url: https://metacpan.org/pod/Class::Inspector
+  summary: Get information about a class and its structure
+  description: |
+    Class::Inspector lets you get information about a class and its structure
+    without loading the class fully. It is useful for reflection, tooling, and
+    documentation generators.
+  license: GPL-1.0-or-later OR Artistic-1.0-Perl
+  license_family: OTHER
+  license_file:
+    - LICENSE
