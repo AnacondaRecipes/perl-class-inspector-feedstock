@@ -16,7 +16,7 @@ build:
     - {{ pin_subpackage('perl-class-inspector', max_pin="x.x") }}
 
 requirements:
-  build:
+  build:    # [unix]
     - make  # [unix]
   host:
     - perl {{ perl }}
