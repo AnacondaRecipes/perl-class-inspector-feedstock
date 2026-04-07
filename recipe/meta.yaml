@@ -20,7 +20,7 @@ requirements:
     - make  # [unix]
   host:
     - perl {{ perl }}
-    - perl-extutils-makemaker
+    - perl-extutils-makemaker 7.78
   run:
     - perl
 
