@@ -11,13 +11,16 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('perl-class-inspector', max_pin="x.x") }}
 
 requirements:
-  build:    # [unix]
+  build:
     - make  # [unix]
+    - {{ stdlib('c') }}
+    # Needs nmake
+    - {{ compiler('c') }}  # [win]
   host:
     - perl {{ perl }}
     - perl-extutils-makemaker 7.78
